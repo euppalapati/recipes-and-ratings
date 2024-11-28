@@ -1,3 +1,4 @@
-# recipes-and-ratings
-ucsd dsc 80 final project, fall 2024
-hello!
+## You Are What You Eat
+# Exploratory and Predictive Analyses on Recipes and Ratings
+
+hi there! ^._.^
