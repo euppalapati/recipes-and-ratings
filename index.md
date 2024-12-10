@@ -1,6 +1,4 @@
-# When You Give a Mouse a Cookie (Recipe)
 ## Exploratory and Predictive Analyses on Recipes and Ratings
-### By: Eeshi Uppalapati
 
 
 ### Introduction
