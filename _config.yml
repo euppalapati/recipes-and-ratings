@@ -1,8 +1,6 @@
 title: When You Give a Mouse a Cookie (Recipe)
 logo: /cookies.jpg
 description: DSC 80 Final Project, Fall 2024\nBy: Eeshi Uppalapati
-show_downloads: true
-google_analytics:
 
 remote_theme: pages-themes/minimal@v0.2.0
 plugins:
