@@ -1,4 +1,4 @@
-# You Are What You Eat
+# When You Give a Mouse a Cookie (Recipe)
 ## Exploratory and Predictive Analyses on Recipes and Ratings
 
 ### Introduction
