@@ -70,7 +70,13 @@ Below is a grouped boxplot of the proportion of sugar in recipes per year. We se
 #### Interesting Aggregates
 Below is a grouped table with aggregate statistics describing the relationship between the number of steps in a recipe and its sugar proportion and calorie count.
 
-TABLE
+|   n_steps |   sugar_prop_mean |   sugar_prop_median |   sugar_prop_min |   sugar_prop_max |   cal_count_mean |   cal_count_median |   cal_count_min |   cal_count_max |
+|----------:|------------------:|--------------------:|-----------------:|-----------------:|-----------------:|-------------------:|----------------:|----------------:|
+|         1 |          0.276673 |           0.186546  |                0 |          1.07898 |          285.133 |             161.4  |             0.1 |          4541.2 |
+|         2 |          0.26871  |           0.157729  |                0 |          1.04322 |          293.095 |             181.1  |             0   |          6730.7 |
+|         3 |          0.241514 |           0.124146  |                0 |          1.07674 |          307.189 |             197.55 |             0   |          5976.1 |
+|         4 |          0.214639 |           0.107362  |                0 |          1.06583 |          344.003 |             230.1  |             0   |         45609   |
+|         5 |          0.195669 |           0.0902151 |                0 |          1.06583 |          358.074 |             256.1  |             0   |         17551.6 |
 
 By plotting the statistics of sugar proportion across number of steps, we see that the median tends to increase and fluctuate more as number of steps increase.
 <iframe
