@@ -73,15 +73,15 @@ Below is a kernel density estimation (KDE) plot of the calorie count of recipes 
 
 PLOTLY
 
-**Null Hypothesis**: The missingness of average ratings does not depend on the calorie count of the recipe.
+*Null Hypothesis*: The missingness of average ratings does not depend on the calorie count of the recipe.
 
-**Alternate Hypothesis**: The missingness of average ratings does depend on the calorie count of the recipe.
+*Alternate Hypothesis*: The missingness of average ratings does depend on the calorie count of the recipe.
 
-**Test Statistic**: Absolute median difference in calorie count between missing and non-missing groups.
+*Test Statistic*: Absolute median difference in calorie count between missing and non-missing groups.
 
-**Significance Level**: 0.05
+*Significance Level*: 0.05
 
-By running permutation tests, we find that the missingness of ratings depends on the calorie count. Below is an empirical distribution of the absolute median difference in calorie count.
+By running permutation tests shuffling the missingness of average rating 1000 times, we find that the missingness of ratings depends on the calorie count (p-value of 0.0). Below is an empirical distribution of the absolute median difference in calorie count.
 
 PLOTLY
 
@@ -89,28 +89,29 @@ Below is a kernel density estimation (KDE) plot of the number of ingredients of 
 
 PLOTLY
 
-**Null Hypothesis**: The missingness of average ratings does not depend on the number of ingredients in the recipe.
+*Null Hypothesis*: The missingness of average ratings does not depend on the number of ingredients in the recipe.
 
-**Alternate Hypothesis**: The missingness of average ratings does depend on the number of ingredients in the recipe.
+*Alternate Hypothesis*: The missingness of average ratings does depend on the number of ingredients in the recipe.
 
-**Test Statistic**: Absolute median difference in number of ingredients between missing and non-missing groups.
+*Test Statistic*: Absolute median difference in number of ingredients between missing and non-missing groups.
 
-**Significance Level**: 0.05
+*Significance Level*: 0.05
 
-By running permutation tests, we find that the missingness of ratings does not depend on the number of ingredients. Below is an empirical distribution of the absolute median difference in number of ingredients.
+By running a permutation test shuffling the missingness of average rating 1000 times, we find that the missingness of ratings does not depend on the number of ingredients (p-value of 1.0). Below is an empirical distribution of the absolute median difference in number of ingredients.
 
 PLOTLY
+
 
 ### Hypothesis Testing
 In this section, we will explore the question **does the sugar proportion of recipes decrease over time?**
 
-**Null Hypothesis**: Sugar proportions in recipes are consistent over time.
+*Null Hypothesis*: Sugar proportions in recipes are consistent over time.
 
-**Alternative Hypothesis**: Recent recipes have lower sugar proportions than older recipes.
+*Alternative Hypothesis*: Recent recipes have lower sugar proportions than older recipes.
 
-**Test Statistic**: Median difference in proportion of sugar (recent - older).
+*Test Statistic*: Median difference in proportion of sugar (recent - older).
 
-**Significance Level**: 0.05.
+*Significance Level*: 0.05.
 
 We are using the median difference in proportion of sugar to observe a one-tailed difference. Since the data for both sugar proportions and dates are skewed right, we will use the median instead of the mean so that our statistic is more robust to outliers.
 
@@ -120,9 +121,13 @@ PLOTLY
 
 
 ### Framing a Prediction Problem
-Clearly state your prediction problem and type (classification or regression). If you are building a classifier, make sure to state whether you are performing binary classification or multiclass classification. Report the response variable (i.e. the variable you are predicting) and why you chose it, the metric you are using to evaluate your model and why you chose it over other suitable metrics (e.g. accuracy vs. F1-score).
+The *multiclass classification* problem explored in the following sections is the prediction of average rating of recipes. By rounding each recipe's average rating to the nearest whole number, we essentially allow rating to become a categorical variable, with possible outcomes being [1, 2, 3, 4, 5] after dropping null values.
 
-Note: Make sure to justify what information you would know at the “time of prediction” and to only train your model using those features. For instance, if we wanted to predict your final exam grade, we couldn’t use your Final Project grade, because the project is only due after the final exam! Feel free to ask questions if you’re not sure.
+By choosing the average rating to predict, we can generalize how different aspects of a recipe influence its perception to Food.com users. Previously, we explored the relationships between different aspects of recipes, and now we can use those findings to build a model. This model can be especially useful for food bloggers and chefs, so they have a better understanding of their audience's preferences.
+
+Since the distribution of average ratings is skewed left, we know that more of the ratings are higher (around the 4-5 range). This makes accuracy a poor choice for an evaluation metric because it does not account for class distribution. Instead, we will use F-1 score, which is the harmonic mean of precision and recall for a classification model.
+
+At time of prediction, we would have access to all of the information included in the recipes dataset, since the recipe would be posted with all relevant information prior to rating.
 
 
 ### Baseline Model
