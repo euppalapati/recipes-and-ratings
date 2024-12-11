@@ -102,12 +102,21 @@ By running permutation tests, we find that the missingness of ratings does not d
 PLOTLY
 
 ### Hypothesis Testing
-Clearly state your null and alternative hypotheses, your choice of test statistic and significance level, the resulting 
-p-value, and your conclusion. Justify why these choices are good choices for answering the question you are trying to answer.
+In this section, we will explore the question **does the sugar proportion of recipes decrease over time?**
 
-Optional: Embed a visualization related to your hypothesis test in your website.
+**Null Hypothesis**: Sugar proportions in recipes are consistent over time.
 
-Tip: When making writing your conclusions to the statistical tests in this project, never use language that implies an absolute conclusion; since we are performing statistical tests and not randomized controlled trials, we cannot prove that either hypothesis is 100% true or false.
+**Alternative Hypothesis**: Recent recipes have lower sugar proportions than older recipes.
+
+**Test Statistic**: Median difference in proportion of sugar (recent - older).
+
+**Significance Level**: 0.05.
+
+We are using the median difference in proportion of sugar to observe a one-tailed difference. Since the data for both sugar proportions and dates are skewed right, we will use the median instead of the mean so that our statistic is more robust to outliers.
+
+Below is an empirical distribution of the median difference in sugar proportion between recent and older recipes. With a p-value of 0.002, we reject the null hypothesis and conclude that sugar proportions are significantly lower in more recent recipes.
+
+PLOTLY
 
 
 ### Framing a Prediction Problem
