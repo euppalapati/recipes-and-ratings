@@ -34,7 +34,13 @@ The following cleaning steps were conducted to ensure efficient and effective an
 
 The head of the merged and cleaned DataFrame is shown below.
 
-TABLE
+|   submitted_year |   sugar_prop |   cal_count | tags                                                                                                                                                                                                                                                                                               |   n_steps |
+|-----------------:|-------------:|------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------:|
+|             2008 |    0.361272  |       138.4 | ['60-minutes-or-less', ...]                                                                        |        10 |
+|             2011 |    0.354562  |       595.1 | ['60-minutes-or-less', ...]                                                                                                                                      |        12 |
+|             2008 |    0.0308008 |       194.8 | ['60-minutes-or-less', ...]                                                                                                                                               |         6 |
+|             2008 |    0.371172  |       878.3 | ['time-to-make', ...] |         7 |
+|             2012 |    0.0449438 |       267   | ['time-to-make', ...]                                                                                                                                             |        17 |
 
 #### Univariate Analysis
 Below is the distribution of the dates that recipes were submitted. The distribution skewed right, which indicates that most of the recipes in this dataset were published during earlier years. As the date becomes more recent, the proportion of recipes in the dataset decreases.
