@@ -5,15 +5,23 @@
 The food blogging industry is thriving, with more people than ever sharing their passion for cooking and baking. Enthusiasts and professionals alike are diving into the art of creating, reviewing, and perfecting dishes, making food blogging a vibrant and influential space. Here, we'll explore **how key aspects of a recipe affect its overall rating**. Understanding this question is valuable not only for the avid chefs who aim to refine their recipes, but also for those looking to predict trends or create better recipe platforms. This dive into recipe success factors is both informative and engaging for anyone who loves food and data.
 
 The first dataset we will explore is `recipes`, which contains recipes posted at Food.com since 2008. This dataset contains 83782 recipes (rows) and the following 12 columns: `name`, `id`, `minutes`, `contributor_id`, `submitted`, `tags`, `nutrition`, `n_steps`, `steps`, `description`, `ingredients`, and `n_ingredients`. For the purposes of this project, we will only be using the following columns:
+
 `id`: Recipe ID.
+
 `submitted`: Date recipe was submitted.
+
 `tags`: Food.com tags for recipe.
+
 `nutrition`: Nutrition information in the form [calories (#), total fat (PDV), sugar (PDV), sodium (PDV), protein (PDV), saturated fat (PDV), carbohydrates (PDV)]; PDV stands for “percentage of daily value”.
+
 `n_steps`: Number of steps in recipe.
+
 `n_ingredients`: Number of ingredients in recipe.
 
 The second dataset we will use for analysis is `ratings`, which contains reviews and ratings submitted for recipes on Food.com. This dataset contains 731927 ratings/reviews (rows) and the following 5 columns: `user_id`, `recipe_id`, `date`, `rating`, and `review`. For the purposes of this project, only the following columns are relevant:
+
 `recipe_id`: Recipe ID.
+
 `rating`: Rating given.
 
 
@@ -22,13 +30,22 @@ The second dataset we will use for analysis is `ratings`, which contains reviews
 The following cleaning steps were conducted to ensure efficient and effective analysis on the data.
 
 1. Left merged the `recipes` and `ratings` datasets on `id` and `recipe_id`, respectively, which allowed for each review to correspond to its recipe.
+
 2. Filled all ratings of 0 with `NaN`, because 0 is the rating automatically assigned when the reviewer only adds a comment. This helped streamline missingness analysis.
+
 3. Grouped the merged dataset on `id` and `rating` to find the average rating for each recipe, then added these values to a new column in the original `recipes` DataFrame. This allowed for each recipe in the original dataset to have a corresponding average rating, which helps us explore our central question.
+
 4. Converted the `tags`, `steps`, and `ingredients` columns from strings to lists of strings, which lets us pull specific values from the lists.
+
 5. Converted the `submitted` column to datetime, helping us conduct analysis on trends over time.
+
 6. Converted `nutrition` to a list of strings, then assign each aspect of the nutrition information (as described in the introduction) to their own columns. By splitting up this data, we could see how individual nutritional factors play a part in recipe rating.
+
 7. Created the `sugar_prop` column, which contains the proportion of sugar per recipe in relation to the number of calories, which allows us to better estimate the sugar content of individual recipes.
+
 8. Created the `year_submitted` column, which extracts the year from each date in `submitted` for looking at general trends over the decade.
+
+The head of the merged and cleaned dataset is shown below.
 
 
 #### Univariate Analysis
