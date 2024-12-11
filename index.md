@@ -6,17 +6,17 @@ The food blogging industry is thriving, with more people than ever sharing their
 
 The first dataset we will explore is `recipes`, which contains recipes posted at Food.com since 2008. This dataset contains 83782 recipes (rows) and the following 12 columns: `name`, `id`, `minutes`, `contributor_id`, `submitted`, `tags`, `nutrition`, `n_steps`, `steps`, `description`, `ingredients`, and `n_ingredients`. For the purposes of this project, we will only be using the following columns:
 
-`id`: Recipe ID.
-`submitted`: Date recipe was submitted.
-`tags`: Food.com tags for recipe.
-`nutrition`: Nutrition information in the form [calories (#), total fat (PDV), sugar (PDV), sodium (PDV), protein (PDV), saturated fat (PDV), carbohydrates (PDV)]; PDV stands for “percentage of daily value”.
-`n_steps`: Number of steps in recipe.
-`n_ingredients`: Number of ingredients in recipe.
+| `id` | Recipe ID |
+| `submitted` | Date recipe was submitted |
+| `tags` | Food.com tags for recipe |
+| `nutrition` | Nutrition information in the form [calories (#), total fat (PDV), sugar (PDV), sodium (PDV), protein (PDV), saturated fat (PDV), carbohydrates (PDV)]; PDV stands for “percentage of daily value” |
+| `n_steps` | Number of steps in recipe |
+| `n_ingredients` | Number of ingredients in recipe |
 
 The second dataset we will use for analysis is `ratings`, which contains reviews and ratings submitted for recipes on Food.com. This dataset contains 731927 ratings/reviews (rows) and the following 5 columns: `user_id`, `recipe_id`, `date`, `rating`, and `review`. For the purposes of this project, only the following columns are relevant:
 
-`recipe_id`: Recipe ID.
-`rating`: Rating given.
+| `recipe_id` | Recipe ID |
+| `rating` | Rating given |
 
 
 ### Data Cleaning and Exploratory Data Analysis
