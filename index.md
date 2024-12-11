@@ -38,22 +38,28 @@ TABLE
 
 #### Univariate Analysis
 Below is the distribution of the dates that recipes were submitted. The distribution skewed right, which indicates that most of the recipes in this dataset were published during earlier years. As the date becomes more recent, the proportion of recipes in the dataset decreases.
-
 <iframe
   src="assets/fig1a.html"
   width="800"
   height="600"
   frameborder="0"
 ></iframe>
-
 Below is the distribution of the sugar proportions of recipes that were submitted. The distribution is skewed right, indicating that most of the recipes in the dataset have lower sugar proportions. As the sugar proportion increases, the proportion of recipes in the dataset decreases.
-
-PLOTLY
+<iframe
+  src="assets/fig1c.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 #### Bivariate Analysis
 Below is a grouped boxplot of the proportion of sugar in recipes per year. We see that the number of recipes with high sugar proportions generally decreases as the year submitted becomes more recent.
-
-PLOTLY
+<iframe
+  src="assets/fig2b.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 #### Interesting Aggregates
 Below is a grouped table with aggregate statistics describing the relationship between the number of steps in a recipe and its sugar proportion and calorie count.
@@ -61,12 +67,19 @@ Below is a grouped table with aggregate statistics describing the relationship b
 TABLE
 
 By plotting the statistics of sugar proportion across number of steps, we see that the median tends to increase and fluctuate more as number of steps increase.
-
-PLOTLY
-
+<iframe
+  src="assets/fig3a.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 By plotting the statistics of calorie count across number of steps, we see that the median stays consistent as number of steps increase.
-
-PLOTLY
+<iframe
+  src="assets/fig3b.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 
 ### Assessment of Missingness
@@ -75,9 +88,12 @@ I believe the `description` column of the dataset is not missing at random (NMAR
 
 #### Missingness Dependency
 Below is a kernel density estimation (KDE) plot of the calorie count of recipes that are missing vs. are not missing average rating.
-
-PLOTLY
-
+<iframe
+  src="assets/fig4a.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 *Null Hypothesis*: The missingness of average ratings does not depend on the calorie count of the recipe.
 
 *Alternate Hypothesis*: The missingness of average ratings does depend on the calorie count of the recipe.
@@ -91,9 +107,12 @@ By running permutation tests shuffling the missingness of average rating 1000 ti
 PLOTLY
 
 Below is a kernel density estimation (KDE) plot of the number of ingredients of recipes that are missing vs. are not missing average rating.
-
-PLOTLY
-
+<iframe
+  src="assets/fig4b.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 *Null Hypothesis*: The missingness of average ratings does not depend on the number of ingredients in the recipe.
 
 *Alternate Hypothesis*: The missingness of average ratings does depend on the number of ingredients in the recipe.
