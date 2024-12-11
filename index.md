@@ -28,32 +28,78 @@ The following cleaning steps were conducted to ensure efficient and effective an
 3. Grouped the merged dataset on `id` and `rating` to find the average rating for each recipe, then added these values to a new column in the original `recipes` DataFrame. This allowed for each recipe in the original dataset to have a corresponding average rating, which helps us explore our central question.
 4. Converted the `tags`, `steps`, and `ingredients` columns from strings to lists of strings, which lets us pull specific values from the lists.
 5. Converted the `submitted` column to datetime, helping us conduct analysis on trends over time.
-6. Converted `nutrition` to a list of strings, then assign each aspect of the nutrition information (as described in the introduction) to their own columns. By splitting up this data, we could see how individual nutritional factors play a part in recipe rating.
+6. Converted `nutrition` to a list of strings, then assign each aspect of the nutrition information (as described in the introduction) to their own columns. By splitting up this data, we can see how individual nutritional factors play a part in recipe rating.
 7. Created the `sugar_prop` column, which contains the proportion of sugar per recipe in relation to the number of calories, which allows us to better estimate the sugar content of individual recipes.
 8. Created the `year_submitted` column, which extracts the year from each date in `submitted` for looking at general trends over the decade.
 
 The head of the merged and cleaned DataFrame is shown below.
 
+TABLE
 
 #### Univariate Analysis
-Embed at least one plotly plot you created in your notebook that displays the distribution of a single column (see Part 2: Report for instructions). Include a 1-2 sentence explanation about your plot, making sure to describe and interpret any trends present. (Your notebook will likely have more visualizations than your website, and that’s fine. Feel free to embed more than one univariate visualization in your website if you’d like, but make sure that each embedded plot is accompanied by a description.)
+Below is the distribution of the dates that recipes were submitted. The distribution skewed right, which indicates that most of the recipes in this dataset were published during earlier years. As the date becomes more recent, the proportion of recipes in the dataset decreases.
+
+PLOTLY
+
+Below is the distribution of the sugar proportions of recipes that were submitted. The distribution is skewed right, indicating that most of the recipes in the dataset have lower sugar proportions. As the sugar proportion increases, the proportion of recipes in the dataset decreases.
+
+PLOTLY
 
 #### Bivariate Analysis
-Embed at least one plotly plot that displays the relationship between two columns. Include a 1-2 sentence explanation about your plot, making sure to describe and interpret any trends present. (Your notebook will likely have more visualizations than your website, and that’s fine. Feel free to embed more than one bivariate visualization in your website if you’d like, but make sure that each embedded plot is accompanied by a description.)
+Below is a grouped boxplot of the proportion of sugar in recipes per year. We see that the number of recipes with high sugar proportions generally decreases as the year submitted becomes more recent.
+
+PLOTLY
 
 #### Interesting Aggregates
-Embed at least one grouped table or pivot table in your website and explain its significance.
+Below is a grouped table with aggregate statistics describing the relationship between the number of steps in a recipe and its sugar proportion and calorie count.
+
+TABLE
+
+By plotting the statistics of sugar proportion across number of steps, we see that the median tends to increase and fluctuate more as number of steps increase.
+
+PLOTLY
+
+By plotting the statistics of calorie count across number of steps, we see that the median stays consistent as number of steps increase.
+
+PLOTLY
 
 
 ### Assessment of Missingness
 #### NMAR Analysis
-State whether you believe there is a column in your dataset that is NMAR. Explain your reasoning and any additional data you might want to obtain that could explain the missingness (thereby making it MAR). Make sure to explicitly use the term “NMAR.”
+I believe the `description` column of the dataset is not missing at random (NMAR). Oftentimes, recipe descriptions include additional information from the chef to persuade their audience to try their recipe. Some common examples include mouthwatering descriptions of the food, anecdotes of fond memories associated with the recipe, and boasts of overhwleming positive feedback. However, if chefs/recipe bloggers deem their recipe title and Food.com tags to provide enough information, or they don't have any stories to tell about their recipe, they are less likely to write a lengthy description about them. In order to explain missingness, obtaining data on whether the recipe holds emotional significance for the chef and running missingness dependency on that column would help us understand whether this column's missingness is missing at random (MAR) depending on the chef/blogger's connection to the recipe.
 
 #### Missingness Dependency
-Present and interpret the results of your missingness permutation tests with respect to your data and question. Embed a plotly plot related to your missingness exploration; ideas include:
-• The distribution of column Y when column X is missing and the distribution of column Y when column X is not missing, as was done in Lecture 8.
-• The empirical distribution of the test statistic used in one of your permutation tests, along with the observed statistic.
+Below is a kernel density estimation (KDE) plot of the calorie count of recipes that are missing vs. are not missing average rating.
 
+PLOTLY
+
+**Null Hypothesis**: The missingness of average ratings does not depend on the calorie count of the recipe.
+
+**Alternate Hypothesis**: The missingness of average ratings does depend on the calorie count of the recipe.
+
+**Test Statistic**: Absolute median difference in calorie count between missing and non-missing groups.
+
+**Significance Level**: 0.05
+
+By running permutation tests, we find that the missingness of ratings depends on the calorie count. Below is an empirical distribution of the absolute median difference in calorie count.
+
+PLOTLY
+
+Below is a kernel density estimation (KDE) plot of the number of ingredients of recipes that are missing vs. are not missing average rating.
+
+PLOTLY
+
+**Null Hypothesis**: The missingness of average ratings does not depend on the number of ingredients in the recipe.
+
+**Alternate Hypothesis**: The missingness of average ratings does depend on the number of ingredients in the recipe.
+
+**Test Statistic**: Absolute median difference in number of ingredients between missing and non-missing groups.
+
+**Significance Level**: 0.05
+
+By running permutation tests, we find that the missingness of ratings does not depend on the number of ingredients. Below is an empirical distribution of the absolute median difference in number of ingredients.
+
+PLOTLY
 
 ### Hypothesis Testing
 Clearly state your null and alternative hypotheses, your choice of test statistic and significance level, the resulting 
