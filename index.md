@@ -183,8 +183,12 @@ The hyperparameters designated to optimize are the `max_depth` and `n_estimators
 The test F-1 score for this model is 0.6730, with individual score for each category as follows: 0.0000, 0.0000, 0.0028, 0.1006, and 0.8025. While this model still performs better for higher ratings, its performance for 3s and 4s increased, indicating that the new features helped generalize the classification. Additionally, the overall F-1 score for the test set increased, which means this model was better at balancing precision and recall than the baseline model was.
 
 Below is a confusion matrix for the final model's test set classification.
-
-PLOTLY
+<iframe
+  src="assets/cm.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 
 ### Fairness Analysis
