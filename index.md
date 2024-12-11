@@ -131,21 +131,38 @@ At time of prediction, we would have access to all of the information included i
 
 
 ### Baseline Model
-Describe your model and state the features in your model, including how many are quantitative, ordinal, and nominal, and how you performed any necessary encodings. Report the performance of your model and whether or not you believe your current model is “good” and why.
+For the baseline model, we will use a DecisionTree classifier and split the data points into training and test sets using `sklearn`'s `train_test_split`. The features used in this model are `sugar_prop` and `protein_pdv`, which both contain quantitative numerical values. Since low-sugar and high-protein foods are trending, these attributes can be indicative of what recipes are rated higher.
 
-Tip: Make sure to hit all of the points above: many projects in the past have lost points for not doing so.
+According to the FDA, 20% of daily value or more of a single nutrient makes that food considered "high" in that nutrient. By using a Binarizer on the `protein_pdv` column, we encode these values to determine if a recipe is considered "high-protein" or not. We will leave `sugar_prop` as is.
+
+The test F-1 score for this model is 0.5688, with individual score for each category as follows: 0.0000, 0.0000, 0.0000, 0.0080, and 0.8180. This means that the model performs better for classifying 5s than any other rating, which is likely because there is a higher proportion of 5-star ratings in the dataset. This F-1 score indicates that there is somewhat of a trade-off between precision and recall, and that the model is average but not necessarily "good".
 
 
 ### Final Model
-State the features you added and why they are good for the data and prediction task. Note that you can’t simply state “these features improved my accuracy”, since you’d need to choose these features and fit a model before noticing that – instead, talk about why you believe these features improved your model’s performance from the perspective of the data generating process.
+For the final model, we will switch to using a RandomForest classifier––which is essentially multiple DecisionTrees "voting" on a classification––to decrease variance. We will also use `carbs_pdv` (quantitative numerical values), `time_tags` (categorical values), `cal_count` (quantitative numerical values), `n_steps` (quantitative numerical values), and `submitted_year` (quantitative numerical values) in addition to `sugar_prop` and the Binarized `protein_pdv`. Likewise to `sugar_prop` and `protein_pdv`, the `carbs_pdv` and `cal_count` columns can provide useful insight into whether recipes are rated higher, since low-carb and low-calorie foods are popular in today's diet-centered culture. As we saw before, `submitted_year` and `sugar_prop` are inversely related, so including this column can give our model more time context. Lastly, it is likely that longer recipes may receive lower ratings, because many people might not have the time or patience for them. As such, we will include `n_steps` and encoded `time_tags` for our model.
 
-Describe the modeling algorithm you chose, the hyperparameters that ended up performing the best, and the method you used to select hyperparameters and your overall model. Describe how your Final Model’s performance is an improvement over your Baseline Model’s performance.
+Imputing values with the median in all of the quantitative columns allows for the dataset to be complete with plausible values. The values in `carbs_pdv` are on a large scale, so we will use StandardScaler to conduct z-score standardization of this column. `time_tags` is a pre-transformed column that finds tags from the `tags` column that have the word "minutes". We then use OrdinalEncoder to transform the values ['15-minutes-or-less', '30-minutes-or-less', '60-minutes-or-less', 'longer'] into ordinal numerical values. Since the range in `cal_count` is very large, and there are extreme outliers, we can use RobustScaler to transform this column. We will leave the remaining columns as is.
 
-Optional: Include a visualization that describes your model’s performance, e.g. a confusion matrix, if applicable.
+The hyperparameters designated to optimize are the `max_depth` and `n_estimators` of the RandomForest, and a GridSearchCV was used to find them in order to avoid overfitting the data. The best performing `max_depth` and `n-estimators` were 100 and 50, respectively.
+
+The test F-1 score for this model is 0.6730, with individual score for each category as follows: 0.0000, 0.0000, 0.0028, 0.1006, and 0.8025. While this model still performs better for higher ratings, its performance for 3s and 4s increased, indicating that the new features helped generalize the classification. Additionally, the overall F-1 score for the test set increased, which means this model was better at balancing precision and recall than the baseline model was.
+
+Below is a confusion matrix for the final model's test set classification.
+
+PLOTLY
 
 
 ### Fairness Analysis
-Clearly state your choice of Group X and Group Y, your evaluation metric, your null and alternative hypotheses, your choice of test statistic and significance level, the resulting 
-p-value, and your conclusion.
+For fairness analysis, we will split recipes into groups of *short recipes* (30 minutes or shorter) and *long recipes* (longer than 30 minutes). We will evaluate whether the model performs similarly for these two groups based on precision parity, because it is important for the model to be correct about its classification so that chefs/bloggers can clearly understand how aspects of their recipe will affect their audience's ratings.
 
-Optional: Embed a visualization related to your permutation test in your website.
+*Null Hypothesis*: The model is fair; the precision for short and long recipes are roughly equal, and any differences are due to random chance.
+
+*Alternative Hypothesis*: The model is unfair; its precision for short recipes is better than long recipes.
+
+*Test Statistic*: Difference in precision (short - long).
+
+*Significance Level*: 0.05.
+
+Below is an empirical distribution of the difference in precision scores of the recipes. With a p-value of 0.012, we reject the null hypothesis and conclude that the model's precision is significantly better for short recipes compared to long ones.
+
+PLOTLY
