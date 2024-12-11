@@ -103,9 +103,12 @@ Below is a kernel density estimation (KDE) plot of the calorie count of recipes 
 *Significance Level*: 0.05
 
 By running permutation tests shuffling the missingness of average rating 1000 times, we find that the missingness of ratings depends on the calorie count (p-value of 0.0). Below is an empirical distribution of the absolute median difference in calorie count.
-
-PLOTLY
-
+<iframe
+  src="assets/mat1.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 Below is a kernel density estimation (KDE) plot of the number of ingredients of recipes that are missing vs. are not missing average rating.
 <iframe
   src="assets/fig4b.html"
@@ -122,8 +125,12 @@ Below is a kernel density estimation (KDE) plot of the number of ingredients of 
 *Significance Level*: 0.05
 
 By running a permutation test shuffling the missingness of average rating 1000 times, we find that the missingness of ratings does not depend on the number of ingredients (p-value of 1.0). Below is an empirical distribution of the absolute median difference in number of ingredients.
-
-PLOTLY
+<iframe
+  src="assets/mat2.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 
 ### Hypothesis Testing
@@ -140,8 +147,12 @@ In this section, we will explore the question **does the sugar proportion of rec
 We are using the median difference in proportion of sugar to observe a one-tailed difference. Since the data for both sugar proportions and dates are skewed right, we will use the median instead of the mean so that our statistic is more robust to outliers.
 
 Below is an empirical distribution of the median difference in sugar proportion between recent and older recipes. With a p-value of 0.002, we reject the null hypothesis and conclude that sugar proportions are significantly lower in more recent recipes.
-
-PLOTLY
+<iframe
+  src="assets/mat3.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 
 ### Framing a Prediction Problem
@@ -188,5 +199,9 @@ For fairness analysis, we will split recipes into groups of *short recipes* (30 
 *Significance Level*: 0.05.
 
 Below is an empirical distribution of the difference in precision scores of the recipes. With a p-value of 0.012, we reject the null hypothesis and conclude that the model's precision is significantly better for short recipes compared to long ones.
-
-PLOTLY
+<iframe
+  src="assets/mat4.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
