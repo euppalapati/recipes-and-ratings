@@ -104,7 +104,7 @@ Below is a kernel density estimation (KDE) plot of the calorie count of recipes 
 
 By running permutation tests shuffling the missingness of average rating 1000 times, we find that the missingness of ratings depends on the calorie count (p-value of 0.0). Below is an empirical distribution of the absolute median difference in calorie count.
 <iframe
-  src="assets/mat1.html"
+  src="assets/dist1.html"
   width="800"
   height="600"
   frameborder="0"
@@ -126,7 +126,7 @@ Below is a kernel density estimation (KDE) plot of the number of ingredients of 
 
 By running a permutation test shuffling the missingness of average rating 1000 times, we find that the missingness of ratings does not depend on the number of ingredients (p-value of 1.0). Below is an empirical distribution of the absolute median difference in number of ingredients.
 <iframe
-  src="assets/mat2.html"
+  src="assets/dist2.html"
   width="800"
   height="600"
   frameborder="0"
@@ -148,7 +148,7 @@ We are using the median difference in proportion of sugar to observe a one-taile
 
 Below is an empirical distribution of the median difference in sugar proportion between recent and older recipes. With a p-value of 0.002, we reject the null hypothesis and conclude that sugar proportions are significantly lower in more recent recipes.
 <iframe
-  src="assets/mat3.html"
+  src="assets/dist3.html"
   width="800"
   height="600"
   frameborder="0"
@@ -204,7 +204,7 @@ For fairness analysis, we will split recipes into groups of *short recipes* (30 
 
 Below is an empirical distribution of the difference in precision scores of the recipes. With a p-value of 0.012, we reject the null hypothesis and conclude that the model's precision is significantly better for short recipes compared to long ones.
 <iframe
-  src="assets/mat4.html"
+  src="assets/dist4.html"
   width="800"
   height="600"
   frameborder="0"
