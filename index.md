@@ -39,7 +39,12 @@ TABLE
 #### Univariate Analysis
 Below is the distribution of the dates that recipes were submitted. The distribution skewed right, which indicates that most of the recipes in this dataset were published during earlier years. As the date becomes more recent, the proportion of recipes in the dataset decreases.
 
-PLOTLY
+<iframe
+  src="assets/fig1a.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 Below is the distribution of the sugar proportions of recipes that were submitted. The distribution is skewed right, indicating that most of the recipes in the dataset have lower sugar proportions. As the sugar proportion increases, the proportion of recipes in the dataset decreases.
 
